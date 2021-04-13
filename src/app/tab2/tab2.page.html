@@ -1,17 +1,29 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Detail Notes
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+      <div *ngFor="let data of isiData | async">
+        <ion-list *ngIf="data.judul === this.judul">
+        <ion-label> Judul : {{data.judul}}</ion-label><br>
+        <ion-label> Isi : {{data.isi}}</ion-label><br>
+        <ion-label> Tanggal : {{data.tanggal}}</ion-label><br>
+        <ion-label> Nilai : {{data.nilai}}</ion-label><br>
+        <ion-label> Foto : </ion-label><br>
+        <p><ion-img [src]="this.webPath"></ion-img></p>
+      </ion-list>
+    </div>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <ion-button color='danger' shape='round' size='medium' (click)="hapus()">Delete</ion-button>
+
+      <h2>Update this notes</h2>
+      <ion-input placeholder="Isi" [(ngModel)]="Isi"></ion-input>
+      <ion-datetime displayFormat="DD-MMM-YYYY" placeholder="Tanggal"[(ngModel)]="Tanggal"></ion-datetime>
+      <ion-input placeholder="Nilai" [(ngModel)]="Nilai"></ion-input>
+      <ion-button (click)="TambahFoto()">Ambil Gambar</ion-button><br>
+    <ion-button color='primary' shape='round' size='medium' (click)="update()">Update</ion-button>
 </ion-content>

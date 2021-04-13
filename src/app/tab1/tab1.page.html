@@ -1,17 +1,25 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Galeri Foto
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-input placeholder="Judul" [(ngModel)]="Judul"></ion-input>
+ <ion-input placeholder="Isi" [(ngModel)]="Isi"></ion-input>
+ <ion-datetime displayFormat="DD-MMM-YYYY" placeholder="Tanggal"[(ngModel)]="Tanggal"></ion-datetime>
+ <ion-input placeholder="Nilai" [(ngModel)]="Nilai"></ion-input>
+ <ion-button (click)="TambahFoto()">Ambil Gambar</ion-button>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+<ion-button (click)="simpan()">SIMPAN NOTES</ion-button>
+<ion-card>
+<ion-list>
+  <h2>List of Judul Notes</h2>
+  <ion-item *ngFor="let data of isiData | async">
+    <ion-label><a routerLink="../tab2/{{data.judul}}">{{data.judul}}</a></ion-label>
+  </ion-item>
+</ion-list>
+</ion-card>
 </ion-content>
