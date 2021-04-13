@@ -37,12 +37,12 @@ export class Tab2Page {
   }
 
   async ngOnInit() {
-    await this.fotoService.loadFoto();
+    // await this.fotoService.loadFoto();
     
   }
 
   async ionViewDidEnter(){
-    await this.fotoService.loadFoto();
+    // await this.fotoService.loadFoto();
     this.tampilkanData();
   }
 
@@ -56,8 +56,6 @@ export class Tab2Page {
           });
         }
       })
-    }).catch((error) => {
-      console.log(error);
     })
   }
 
@@ -101,21 +99,17 @@ export class Tab2Page {
         });
       }
       });
-    }).catch((error) => {
-      console.log(error);
     })
 
     const imgfilepath = `imgStorage/${this.newFoto.filePath}`
     this.afStorage.upload(imgfilepath, this.newFoto.dataImage).then(() =>{
       this.dataFoto = this.newFoto
       console.log(this.newFoto)
-    }).catch((error) => {
-    console.log(error);
-  })
+    })
+  await this.tampilkanData();
 
     alert("Notes sudah terupdate, tunggu sejenak/masuk kembali dari page 1 untuk mengganti foto")
-    await this.fotoService.loadFoto();
-    this.tampilkanData();
+    // await this.fotoService.loadFoto();
     // location.reload();
 
   }
