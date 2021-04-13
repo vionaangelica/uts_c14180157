@@ -82,7 +82,7 @@ export class Tab2Page {
     this.newFoto = await this.fotoService.updateFoto(this.judul);
   }
 
-  update(){
+  async update(){
     this.dateFormat = this.Tanggal.split('T')[0];
     this.isiDataColl.doc(this.judul).update({
       isi : this.Isi,
@@ -113,8 +113,8 @@ export class Tab2Page {
     console.log(error);
   })
 
-    alert("Notes sudah terupdate, tunggu sejenak/refresh untuk mengganti foto")
-    this.fotoService.loadFoto();
+    alert("Notes sudah terupdate, tunggu sejenak/masuk kembali dari page 1 untuk mengganti foto")
+    await this.fotoService.loadFoto();
     this.tampilkanData();
     // location.reload();
 
